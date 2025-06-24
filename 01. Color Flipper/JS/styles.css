@@ -1,0 +1,255 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap');
+
+/*
+=============== 
+CSS 변수 정의
+
+:root {
+    --변수이름: 값;
+}
+
+- :root는 HTML 문서 전체에서 사용할 수 있는 전역 변수를 정의하는 영역
+- [--변수이름]은 CSS 변수임 나중에 var(--변수이름) 으로 값을 사용할 수 있음
+
+--clr-primary-1 ~ 10 -> 하나의 기본 색상을 진한 색에서 연한 색으로 단계별 정리한 코드
+===============
+*/
+
+:root {
+    /* dark shades of primary color*/
+    --clr-primary-1: hsl(205, 86%, 17%);
+    --clr-primary-2: hsl(205, 77%, 27%);
+    --clr-primary-3: hsl(205, 72%, 37%);
+    --clr-primary-4: hsl(205, 63%, 48%);
+    /* primary/main color */
+    --clr-primary-5: hsl(205, 78%, 60%);
+    /* lighter shades of primary color */
+    --clr-primary-6: hsl(205, 89%, 70%);
+    --clr-primary-7: hsl(205, 90%, 76%);
+    --clr-primary-8: hsl(205, 86%, 81%);
+    --clr-primary-9: hsl(205, 90%, 88%);
+    --clr-primary-10: hsl(205, 100%, 96%);
+    /* darkest grey - used for headings */
+    --clr-grey-1: hsl(209, 61%, 16%);
+    --clr-grey-2: hsl(211, 39%, 23%);
+    --clr-grey-3: hsl(209, 34%, 30%);
+    --clr-grey-4: hsl(209, 28%, 39%);
+    /* grey used for paragraphs */
+    --clr-grey-5: hsl(210, 22%, 49%);
+    --clr-grey-6: hsl(209, 23%, 60%);
+    --clr-grey-7: hsl(211, 27%, 70%);
+    --clr-grey-8: hsl(210, 31%, 80%);
+    --clr-grey-9: hsl(212, 33%, 89%);
+    --clr-grey-10: hsl(210, 36%, 96%);
+    --clr-white: #fff;
+    --clr-red-dark: hsl(360, 67%, 44%);
+    --clr-red-light: hsl(360, 71%, 66%);
+    --clr-green-dark: hsl(125, 67%, 44%);
+    --clr-green-light: hsl(125, 71%, 66%);
+    --clr-black: #222;
+    /* font 설정 */
+    --ff-primary: 'Roboto', sans-serif;
+    --ff-secondary: 'Open Sans', sans-serif;
+    /* 레이아웃 / 스타일 관련 변수*/
+    --transition: all 0.3s linear;
+    --spacing: 0.1rem;
+    --radius: 0.25rem;
+    /* 그림자 스타일 */
+    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /*페이지 너비 제한용 값*/
+    --max-width: 1170px;
+    --fixed-width: 620px;
+}
+
+/*
+=============== 
+Global Styles: 웹 페이지 전반에 적용되는 기본 스타일
+===============
+*/
+
+/* 모든 요소의 margin, padding을 0으로 초기화 */
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: var(--ff-secondary); /*기본 폰트*/
+    background: var(--clr-grey-10); /*전체 배경 색상*/
+    color: var(--clr-grey-1); /*기본 텍스트 색상*/
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+ul {
+    list-style-type: none; /* 기본 점 제거 */
+}
+a {
+    text-decoration: none; /* 링크 밑줄 제거 */
+}
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: var(--spacing);
+    text-transform: capitalize;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    font-family: var(--ff-primary);
+}
+h1 {
+    font-size: 1.5rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+h4 {
+    font-size: 0.875rem;
+}
+p {
+    margin-bottom: 1.25rem;
+    color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 1.75rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    body {
+        font-size: 1rem;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+        line-height: 1;
+    }
+}
+/*  global classes */
+
+/* section */
+/* 여백만 담당하는 Wrapper */
+.section {
+    padding: 5rem 0;
+}
+
+.section-center {
+    width: 90vw;
+    margin: 0 auto; /* 가운데 정렬 */
+    max-width: 1170px; /* 가로폭이 너무 넓어지지 않도록 제한 */
+}
+@media screen and (min-width: 992px) {
+    .section-center {
+        width: 95vw;
+    }
+}
+main {
+    min-height: 100vh; /* 화면 전체 높이 꽉 채우기 */
+
+    /* display + place-items = 가로 + 세로 중앙 정렬 한 번에 적용*/
+    display: grid;
+    place-items: center;
+}
+
+/*
+=============== 
+header, Nav
+===============
+*/
+header {
+    background: var(--clr-white);
+    height: 3rem;
+    display: grid;
+    align-items: center;
+    box-shadow: var(--dark-shadow);
+}
+.header-center {
+    width: 90vw;
+    max-width: var(--fixed-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 내부 요소 양끝 정렬 */
+}
+
+.header-center h1 {
+    margin-bottom: 0; /* 기본 h1 여백 제거를 통한 라인 맞춤 */
+    color: var(--clr-primary-5); /* 로고 색상 수정을 통한 강조 */
+}
+
+.nav-links ul {
+    display: flex; /* ul 태그 밑 li태그 가로 정렬*/
+}
+
+nav a {
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--clr-primary-1);
+    letter-spacing: var(--spacing);
+    margin-right: 1rem;
+}
+nav a:hover {
+    color: var(--clr-primary-5);
+}
+/*
+=============== 
+Container
+===============
+*/
+main {
+    min-height: calc(100vh - 3rem); /* 전체 높이에서 헤더의 높이만큼 뺀 나머지를 main으로*/
+    display: grid; /* grid 레이아웃 사용*/
+    place-items: center; /* 수직 수평 정중앙에 배치*/
+}
+.container {
+    text-align: center;
+}
+.container h2 {
+    background: var(--clr-black);
+    color: var(--clr-white);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 2.5rem;
+}
+.color {
+    color: var(--clr-primary-5);
+}
+.btn-hero {
+    font-family: var(--ff-primary);
+    text-transform: uppercase;
+    background: transparent; /* 버튼 배경 투명*/
+    color: var(--clr-black);
+    letter-spacing: var(--spacing);
+    display: inline-block;
+    font-weight: 700;
+    transition: var(--transition);
+    border: 2px solid var(--clr-black);
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    padding: 0.75rem 1.25rem;
+}
+.btn-hero:hover {
+    color: var(--clr-white);
+    background: var(--clr-black);
+}
